@@ -7,8 +7,10 @@ function BookList(props) {
 
     const books = useSelector((store) => store.books.items)
 
+    // Set top books as top 4 books
     const [topBooks, setTopBooks] = useState(books.slice(0,4))
 
+    // State for see more books
     const [seeMore, setSeeMore] = useState(false);
 
     function handleSeeMore() {

@@ -1,9 +1,12 @@
-import books from "../utils/bookData"
+import { useSelector } from "react-redux";
 import "../App.css"
 import { Link, Outlet } from "react-router-dom";
 
 function Home() {
 
+    const books = useSelector((store) => store.books.items);  
+    
+    // Dynamically fetch the categories from the books
     const uniqueCategories = [...new Set(books.flatMap(item => item.categories))];
 
     return (

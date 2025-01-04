@@ -4,10 +4,13 @@
     import { useState } from "react";
 
     function BrowseBooks() {
+
         const books = useSelector((store) => store.books.items)
 
+        // State for filtered books on search
         const [filteredBooks, setFilteredBooks] = useState(books);
 
+        // Function for handling the searched book
         function handleSearch(searchText) {
             if(searchText == "") {
                 setFilteredBooks(books)

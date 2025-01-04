@@ -6,6 +6,7 @@ import "../App.css";
 
 function AddBook() {
 
+    // Form data format
     const [formData, setFormData] = useState({
         title: '',
         author: '',
@@ -16,10 +17,12 @@ function AddBook() {
         cover_image: ''
     });
 
+    // State for empty field errors
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // Function for Validating form
     function validateForm() {
         const newErrors = {};
 
@@ -35,22 +38,29 @@ function AddBook() {
         return Object.keys(newErrors).length === 0;
     }
 
+    // Function for handling the change in input fields
     function handleChange(e) {
         const {name, value} = e.target;
         setFormData({...formData, [name]: value});
     }
 
+    // Function for handling the submit click
     function handleSubmit(e) {
         e.preventDefault();
 
         if(validateForm()) {
+
+            // Date.now() create a unique id for our book
             const newId = Date.now()
+            
             const formattedData = {
                 ...formData,
                 id: newId,
                 categories: formData.categories.split(',').map((c) => c.trim())
             };
             dispatch(addBook(formattedData));
+
+            // After adding set the state empty
             setFormData({
                 title: '',
                 author: '',
@@ -60,6 +70,8 @@ function AddBook() {
                 description: '',
                 cover_image: '',
             });
+
+            // Navigate to the newly added book
             navigate(`/book/${newId}`);
         }
     }

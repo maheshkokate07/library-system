@@ -39,7 +39,8 @@ const appRouter = createBrowserRouter([
             path: '/add-book',
             element: <AddBook />
           }
-        ]
+        ],
+        errorElement: <Error />
       }
     ],
     errorElement: <Error />

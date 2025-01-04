@@ -6,7 +6,9 @@ import "../App.css";
 function CategoryBooks() {
 
     const params = useParams();
-    const books = useSelector((store) => store.books.items)
+    const books = useSelector((store) => store.books.items);
+
+    // Get the category from params and filter the books having same category
     const categorisedBooks = books.filter(book => book.categories.includes(params.category))
 
     return (

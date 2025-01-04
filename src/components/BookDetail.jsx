@@ -3,11 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import "../App.css";
 
 function BookDetail() {
+    
     const params = useParams();
+
+    // Get books from store
     const books = useSelector((store) => store.books.items);
 
+    // Filter the books with id in we get in params
     const book = books.filter(book => book.id == params.id);
-    console.log(book)
 
     return (
         <>
